@@ -25,6 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().barTintColor = UIColor.rgb(r: 230, g: 32, b: 31)
         
+        // Remove black bar below nav bar
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        
         application.statusBarStyle = .lightContent
         
         let statusBarBackgroundView = UIView()

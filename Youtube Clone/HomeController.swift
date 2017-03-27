@@ -14,6 +14,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     private var cellHeight: CGFloat = 0
     private let contentOffset: CGFloat = 16
     
+    let menuBar: MenuBar = {
+        let mb = MenuBar()
+        
+        return mb
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
      
@@ -28,6 +34,17 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         collectionView?.backgroundColor = .white
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: cellId)
+        
+        collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
+    
+        setupMenuBar()
+    }
+    
+    private func setupMenuBar() {
+        view.addSubview(menuBar)
+        
+        menuBar.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 50)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

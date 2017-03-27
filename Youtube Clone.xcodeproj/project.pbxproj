@@ -16,6 +16,8 @@
 		D8AC6D1D1E8980550029C283 /* UIColor + rgb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC6D1B1E8980550029C283 /* UIColor + rgb.swift */; };
 		D8AC6D1E1E8980550029C283 /* UIView + Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC6D1C1E8980550029C283 /* UIView + Anchors.swift */; };
 		D8AC6D201E8983290029C283 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC6D1F1E8983290029C283 /* VideoCell.swift */; };
+		D8AC6D221E89B8180029C283 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC6D211E89B8180029C283 /* MenuBar.swift */; };
+		D8AC6D241E89BBD70029C283 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC6D231E89BBD70029C283 /* MenuCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		D8AC6D1B1E8980550029C283 /* UIColor + rgb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor + rgb.swift"; sourceTree = "<group>"; };
 		D8AC6D1C1E8980550029C283 /* UIView + Anchors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Anchors.swift"; sourceTree = "<group>"; };
 		D8AC6D1F1E8983290029C283 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		D8AC6D211E89B8180029C283 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
+		D8AC6D231E89BBD70029C283 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,8 @@
 			children = (
 				D8AC6D171E8980360029C283 /* BaseCell.swift */,
 				D8AC6D1F1E8983290029C283 /* VideoCell.swift */,
+				D8AC6D211E89B8180029C283 /* MenuBar.swift */,
+				D8AC6D231E89BBD70029C283 /* MenuCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -186,6 +192,8 @@
 				D8AC6D1D1E8980550029C283 /* UIColor + rgb.swift in Sources */,
 				D8AC6D181E8980360029C283 /* BaseCell.swift in Sources */,
 				D8AC6D021E897F500029C283 /* AppDelegate.swift in Sources */,
+				D8AC6D221E89B8180029C283 /* MenuBar.swift in Sources */,
+				D8AC6D241E89BBD70029C283 /* MenuCell.swift in Sources */,
 				D8AC6D201E8983290029C283 /* VideoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
