@@ -18,6 +18,8 @@
 		D8AC6D201E8983290029C283 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC6D1F1E8983290029C283 /* VideoCell.swift */; };
 		D8AC6D221E89B8180029C283 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC6D211E89B8180029C283 /* MenuBar.swift */; };
 		D8AC6D241E89BBD70029C283 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC6D231E89BBD70029C283 /* MenuCell.swift */; };
+		D8AC6D261E89C34D0029C283 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC6D251E89C34D0029C283 /* Video.swift */; };
+		D8AC6D281E89C8700029C283 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC6D271E89C8700029C283 /* Channel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		D8AC6D1F1E8983290029C283 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		D8AC6D211E89B8180029C283 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		D8AC6D231E89BBD70029C283 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		D8AC6D251E89C34D0029C283 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		D8AC6D271E89C8700029C283 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,8 @@
 		D8AC6D151E897FEB0029C283 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D8AC6D251E89C34D0029C283 /* Video.swift */,
+				D8AC6D271E89C8700029C283 /* Channel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -188,9 +194,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8AC6D041E897F500029C283 /* HomeController.swift in Sources */,
+				D8AC6D281E89C8700029C283 /* Channel.swift in Sources */,
 				D8AC6D1E1E8980550029C283 /* UIView + Anchors.swift in Sources */,
 				D8AC6D1D1E8980550029C283 /* UIColor + rgb.swift in Sources */,
 				D8AC6D181E8980360029C283 /* BaseCell.swift in Sources */,
+				D8AC6D261E89C34D0029C283 /* Video.swift in Sources */,
 				D8AC6D021E897F500029C283 /* AppDelegate.swift in Sources */,
 				D8AC6D221E89B8180029C283 /* MenuBar.swift in Sources */,
 				D8AC6D241E89BBD70029C283 /* MenuCell.swift in Sources */,
