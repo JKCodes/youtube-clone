@@ -16,6 +16,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     var videos: [Video]?
     
+    let settingsController = SettingsController()
+    
     let menuBar: MenuBar = {
         let mb = MenuBar()
         
@@ -101,7 +103,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func handleMore() {
-        
+        settingsController.showSettings()
     }
     
     func handleSearch() {

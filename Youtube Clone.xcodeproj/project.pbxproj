@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D88D94AC1E8BD6A600E2EC13 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88D94AB1E8BD6A600E2EC13 /* CustomImageView.swift */; };
+		D88D94AF1E8BE3FD00E2EC13 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88D94AE1E8BE3FD00E2EC13 /* SettingsController.swift */; };
 		D8AC6D021E897F500029C283 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC6D011E897F500029C283 /* AppDelegate.swift */; };
 		D8AC6D041E897F500029C283 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC6D031E897F500029C283 /* HomeController.swift */; };
 		D8AC6D071E897F500029C283 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8AC6D051E897F500029C283 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		D88D94AB1E8BD6A600E2EC13 /* CustomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		D88D94AE1E8BE3FD00E2EC13 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		D8AC6CFE1E897F500029C283 /* Youtube Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Youtube Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8AC6D011E897F500029C283 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8AC6D031E897F500029C283 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				D8AC6D031E897F500029C283 /* HomeController.swift */,
+				D88D94AE1E8BE3FD00E2EC13 /* SettingsController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D88D94AF1E8BE3FD00E2EC13 /* SettingsController.swift in Sources */,
 				D8AC6D041E897F500029C283 /* HomeController.swift in Sources */,
 				D8AC6D281E89C8700029C283 /* Channel.swift in Sources */,
 				D8AC6D1E1E8980550029C283 /* UIView + Anchors.swift in Sources */,
