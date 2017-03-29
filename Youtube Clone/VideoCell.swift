@@ -27,13 +27,8 @@ class VideoCell: BaseCell {
         didSet {
             titleLabel.text = video?.title
             
-            if let imageName = video?.thumbnailImageName {
-                thumbnailImageView.image = UIImage(named: imageName)                
-            }
-
-            if let profileImageName = video?.channel?.profileImageName {
-                userProfileImageView.image = UIImage(named: profileImageName)
-            }
+            setupThumbnailImage()
+            setupProfileImage()
             
             if let channelName = video?.channel?.name, let numberOfViews = video?.numberOfViews {
                 
@@ -76,6 +71,7 @@ class VideoCell: BaseCell {
         imageView.image = #imageLiteral(resourceName: "taylor_swift_profile")
         imageView.layer.cornerRadius = VideoCell.profileImageRadius
         imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
@@ -114,5 +110,17 @@ class VideoCell: BaseCell {
         subtitleTextView.anchor(top: titleLabel.bottomAnchor, left: titleLabel.leftAnchor, bottom: nil, right: titleLabel.rightAnchor, topConstant: contentOffset / 4, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: subtitleLabelHeight)
         separatorView.anchor(top: subtitleTextView.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: contentOffset / 2, leftConstant: contentOffset, bottomConstant: 0, rightConstant: contentOffset, widthConstant: 0, heightConstant: separatorLineHeight)
 
+    }
+    
+    func setupThumbnailImage() {
+        if let thumbnailImageUrl = video?.thumbnailImageName {
+            thumbnailImageView.loadImageUsingUrlString(urlString: thumbnailImageUrl)
+        }
+    }
+    
+    func setupProfileImage() {
+        if let profileImageUrl = video?.channel?.profileImageName {
+            userProfileImageView.loadImageUsingUrlString(urlString: profileImageUrl)
+        }
     }
 }
