@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout, HomeDelegate {
 
     private let cellId = "cellId"
     private var cellHeight: CGFloat = 0
@@ -16,7 +16,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     var videos: [Video]?
     
-    let settingsController = SettingsController()
+    lazy var settingsController: SettingsController = { [weak self] in
+        guard let this = self else { return SettingsController() }
+        
+        let vc = SettingsController()
+        vc.delegate = this
+        return vc
+    }()
     
     let menuBar: MenuBar = {
         let mb = MenuBar()
@@ -26,7 +32,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         fetchVideos()
         
         navigationItem.title = "Home"
@@ -136,6 +142,17 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func showControllerForSetting(setting: Setting) {
+        
+        // Currently just creates a dummy controller -- fix later
+        let vc = UIViewController()
+        vc.navigationItem.title = setting.name.rawValue
+        vc.view.backgroundColor = .white
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

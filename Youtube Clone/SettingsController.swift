@@ -13,13 +13,15 @@ class SettingsController: NSObject, UICollectionViewDataSource, UICollectionView
     private let cellId = "cellId"
     private let settingCellSize: CGFloat = 50
     
+    weak var delegate: HomeDelegate?
+    
     let blackView = UIView()
     
     let settings: [Setting] = {
-        let settingsSetting = Setting(name: .Settings, imageName: "settings")
+        let settingsSetting = Setting(name: .settings, imageName: "settings")
         
-        let cancelSetting = Setting(name: .Cancel, imageName: "cancel")
-        return [settingsSetting, Setting(name: .TermsPrivacy, imageName: "privacy"), Setting(name: .SendFeedback, imageName: "feedback"), Setting(name: .Help, imageName: "help"), Setting(name: .SwitchAccount, imageName: "switch_account"), cancelSetting]
+        let cancelSetting = Setting(name: .cancel, imageName: "cancel")
+        return [settingsSetting, Setting(name: .termsPrivacy, imageName: "privacy"), Setting(name: .sendFeedback, imageName: "feedback"), Setting(name: .help, imageName: "help"), Setting(name: .switchAccount, imageName: "switch_account"), cancelSetting]
     }()
     
     let collectionView: UICollectionView = {
@@ -67,7 +69,7 @@ class SettingsController: NSObject, UICollectionViewDataSource, UICollectionView
 
     }
     
-    func handleDismiss() {
+    func handleDismiss(setting: Setting) {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: { [weak self] in
             guard let this = self else { return }
             this.blackView.alpha = 0
@@ -75,8 +77,11 @@ class SettingsController: NSObject, UICollectionViewDataSource, UICollectionView
             if let window = UIApplication.shared.keyWindow {
                 this.collectionView.frame = CGRect(x: 0, y: window.frame.height, width: this.collectionView.frame.width, height: this.collectionView.frame.height)
             }
-            
         }) { [weak self] (completed) in
+            
+            if setting.name != .cancel {
+                self?.delegate?.showControllerForSetting(setting: setting)
+            }
             self?.collectionView.removeFromSuperview()
             self?.blackView.removeFromSuperview()
         }
@@ -101,5 +106,11 @@ class SettingsController: NSObject, UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let setting = self.settings[indexPath.item]
+        handleDismiss(setting: setting)
     }
 }

@@ -11,6 +11,7 @@
 		D88D94AF1E8BE3FD00E2EC13 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88D94AE1E8BE3FD00E2EC13 /* SettingsController.swift */; };
 		D88D94B11E8BFDCE00E2EC13 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88D94B01E8BFDCE00E2EC13 /* SettingCell.swift */; };
 		D88D94B41E8C007300E2EC13 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88D94B31E8C007300E2EC13 /* Setting.swift */; };
+		D88D94B61E8C050C00E2EC13 /* HomeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88D94B51E8C050C00E2EC13 /* HomeDelegate.swift */; };
 		D8AC6D021E897F500029C283 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC6D011E897F500029C283 /* AppDelegate.swift */; };
 		D8AC6D041E897F500029C283 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC6D031E897F500029C283 /* HomeController.swift */; };
 		D8AC6D071E897F500029C283 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8AC6D051E897F500029C283 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 		D88D94AE1E8BE3FD00E2EC13 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		D88D94B01E8BFDCE00E2EC13 /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		D88D94B31E8C007300E2EC13 /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		D88D94B51E8C050C00E2EC13 /* HomeDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeDelegate.swift; sourceTree = "<group>"; };
 		D8AC6CFE1E897F500029C283 /* Youtube Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Youtube Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8AC6D011E897F500029C283 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8AC6D031E897F500029C283 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			children = (
 				D8AC6D1B1E8980550029C283 /* UIColor + rgb.swift */,
 				D8AC6D1C1E8980550029C283 /* UIView + Anchors.swift */,
+				D88D94B51E8C050C00E2EC13 /* HomeDelegate.swift */,
 			);
 			name = "Protocols and Extensions";
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				D8AC6D281E89C8700029C283 /* Channel.swift in Sources */,
 				D8AC6D1E1E8980550029C283 /* UIView + Anchors.swift in Sources */,
 				D88D94B41E8C007300E2EC13 /* Setting.swift in Sources */,
+				D88D94B61E8C050C00E2EC13 /* HomeDelegate.swift in Sources */,
 				D8AC6D1D1E8980550029C283 /* UIColor + rgb.swift in Sources */,
 				D8AC6D181E8980360029C283 /* BaseCell.swift in Sources */,
 				D88D94AC1E8BD6A600E2EC13 /* CustomImageView.swift in Sources */,

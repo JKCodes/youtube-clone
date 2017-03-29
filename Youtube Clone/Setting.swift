@@ -19,10 +19,10 @@ class Setting: NSObject {
 }
 
 enum SettingName: String {
-    case Cancel = "Cancel & Dismiss Completely"
-    case Settings = "Settings"
-    case TermsPrivacy = "Terms & privacy policy"
-    case SendFeedback = "Send Feedback"
-    case Help = "Help"
-    case SwitchAccount = "Switch Account"
+    case cancel = "Cancel"
+    case settings = "Settings"
+    case termsPrivacy = "Terms & privacy policy"
+    case sendFeedback = "Send Feedback"
+    case help = "Help"
+    case switchAccount = "Switch Account"
 }
