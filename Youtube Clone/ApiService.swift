@@ -30,9 +30,7 @@ class ApiService: NSObject {
     func fetchFeed(urlString: String, completion: @escaping ([Video]) -> ()) {
         guard let url = URL(string: urlString) else { return }
         
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            
-            guard let data = data else { return }
+        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             
             if error != nil {
                 print("\(error)")
@@ -40,36 +38,17 @@ class ApiService: NSObject {
             }
             
             do {
-                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-                
-                var videos = [Video]()
-                
-                for dictionary in json as! [[String: AnyObject]] {
+                if let unwrappedData = data, let jsonDictionaries = try JSONSerialization.jsonObject(with: unwrappedData, options: .mutableContainers) as? [[String: AnyObject]] {
                     
-                    let video = Video()
-                    video.title = dictionary["title"] as? String
-                    video.thumbnailImageName = dictionary["thumbnail_image_name"] as? String
-                    video.numberOfViews = dictionary["number_of_views"] as? NSNumber
-                    
-                    let channelDictionary = dictionary["channel"] as! [String: AnyObject]
-                    
-                    let channel = Channel()
-                    channel.name = channelDictionary["name"] as? String
-                    channel.profileImageName = channelDictionary["profile_image_name"] as? String
-                    
-                    video.channel = channel
-                    
-                    videos.append(video)
-                }
-                
-                DispatchQueue.main.async {
-                    completion(videos)
+                    DispatchQueue.main.async {
+                        completion(jsonDictionaries.map({return Video(dictionary: $0)}))
+                    }
                 }
                 
             } catch let jsonError {
                 print("\(jsonError)")
             }
-            
-            }.resume()
+        }) .resume()
+        
     }
 }
