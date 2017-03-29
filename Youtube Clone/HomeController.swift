@@ -11,10 +11,10 @@ import UIKit
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout, SettingsDelegate, MenuBarDelegate {
 
     private let cellId = "cellId"
-    private var cellHeight: CGFloat = 0
     private let contentOffset: CGFloat = 16
+    private let menuBarHeight: CGFloat = 50
     
-    var videos: [Video]?
+    let titles = ["Home", "Trending", "Subscriptions", "Account"]
     
     lazy var settingsController: SettingsController = { [weak self] in
         guard let this = self else { return SettingsController() }
@@ -39,9 +39,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        fetchVideos()
-        
+                
         navigationController?.navigationBar.isTranslucent = false
         
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - contentOffset * 2, height: view.frame.height))
@@ -61,18 +59,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }
         
         collectionView?.backgroundColor = .white
-        //collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
-        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
+        collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.contentInset = UIEdgeInsetsMake(menuBarHeight, 0, 0, 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(menuBarHeight, 0, 0, 0)
         collectionView?.isPagingEnabled = true
-    }
-    
-    func fetchVideos() {
-        ApiService.shared.fetchVideos { [weak self] (videos) in
-            self?.videos = videos
-            self?.collectionView?.reloadData()
-        }
     }
     
     private func setupNavBarButtons() {
@@ -92,9 +82,17 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
     }
     
+    private func setTitle(index: Int) {
+        if let titleLabel = navigationItem.titleView as? UILabel {
+            titleLabel.text = "  \(titles[index])"
+        }
+    }
+    
     func scrollToMenuIndex(menuIndex: Int) {
         let indexPath = IndexPath(item: menuIndex, section: 0)
         collectionView?.scrollToItem(at: indexPath, at: [], animated: true)
+        
+        setTitle(index: menuIndex)
     }
     
     private func setupMenuBar() {
@@ -104,8 +102,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         view.addSubview(redView)
         view.addSubview(menuBar)
         
-        redView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 50)
-        menuBar.anchor(top: topLayoutGuide.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 50)
+        redView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: menuBarHeight)
+        menuBar.anchor(top: topLayoutGuide.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: menuBarHeight)
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -125,7 +123,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height)
+        return CGSize(width: view.frame.width, height: view.frame.height - menuBarHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -133,35 +131,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
         let index = Int(targetContentOffset.pointee.x / view.frame.width)
         let indexPath = IndexPath(item: index, section: 0)
         menuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
-    }
-    
-    /*
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return videos?.count ?? 0
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! VideoCell
         
-        cell.video = videos?[indexPath.item]
-        
-        return cell
+        setTitle(index: index)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        cellHeight = (view.frame.width - contentOffset * 2) * 9 / 16
-        
-        return CGSize(width: view.frame.width, height: cellHeight + VideoCell.cellHeightMinusThumbnail)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
- */
     
     func showControllerForSetting(setting: Setting) {
         
