@@ -38,7 +38,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     func fetchVideos() {
-        ApiService.shared.fetchVideos { [weak self] (videos) in
+        ApiService.shared.fetchFeed(urlString: "https://s3-us-west-2.amazonaws.com/youtubeassets/home.json") { [weak self] (videos) in
             self?.videos = videos
             self?.collectionView.reloadData()
         }
