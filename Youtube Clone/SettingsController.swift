@@ -19,9 +19,12 @@ class SettingsController: NSObject, UICollectionViewDataSource, UICollectionView
     
     let settings: [Setting] = {
         let settingsSetting = Setting(name: .settings, imageName: "settings")
-        
+        let termsPrivacySetting = Setting(name: .termsPrivacy, imageName: "privacy")
+        let sendFeedbackSetting = Setting(name: .sendFeedback, imageName: "feedback")
+        let helpSetting = Setting(name: .help, imageName: "help")
+        let switchAccountSetting = Setting(name: .switchAccount, imageName: "switch_account")
         let cancelSetting = Setting(name: .cancel, imageName: "cancel")
-        return [settingsSetting, Setting(name: .termsPrivacy, imageName: "privacy"), Setting(name: .sendFeedback, imageName: "feedback"), Setting(name: .help, imageName: "help"), Setting(name: .switchAccount, imageName: "switch_account"), cancelSetting]
+        return [settingsSetting, termsPrivacySetting, sendFeedbackSetting, helpSetting, switchAccountSetting, cancelSetting]
     }()
     
     let collectionView: UICollectionView = {
