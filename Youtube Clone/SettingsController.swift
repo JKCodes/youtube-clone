@@ -13,7 +13,7 @@ class SettingsController: NSObject, UICollectionViewDataSource, UICollectionView
     private let cellId = "cellId"
     private let settingCellSize: CGFloat = 50
     
-    weak var delegate: HomeDelegate?
+    weak var delegate: SettingsDelegate?
     
     let blackView = UIView()
     

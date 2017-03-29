@@ -35,7 +35,7 @@ class VideoCell: BaseCell {
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
                 if let formattedViews = numberFormatter.string(from: numberOfViews) {
-                    let subtitleText = "\(channelName) • \(formattedViews) • 24 years ago"
+                    let subtitleText = "\(channelName) • \(formattedViews) • 4 years ago"
                     subtitleTextView.text = subtitleText
                 }
             }
@@ -77,7 +77,7 @@ class VideoCell: BaseCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Taylor Swift - Blank Space"
+        label.text = "Random Title"
         label.numberOfLines = 2
         label.font = .systemFont(ofSize: 16)
         return label
@@ -85,7 +85,8 @@ class VideoCell: BaseCell {
     
     let subtitleTextView: UITextView = {
         let textView = UITextView()
-        textView.textContainerInset = UIEdgeInsetsMake(0, -4, 0, 0)
+        textView.text = "Ranom Text"
+        textView.contentInset = UIEdgeInsetsMake(-8, -4, 0, 0)
         textView.textColor = .lightGray
         textView.isEditable = false
         return textView

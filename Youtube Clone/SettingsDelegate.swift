@@ -1,5 +1,5 @@
 //
-//  HomeDelegate.swift
+//  SettingsDelegate.swift
 //  Youtube Clone
 //
 //  Created by Joseph Kim on 3/29/17.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-protocol HomeDelegate: class {
+protocol SettingsDelegate: class {
     func showControllerForSetting(setting: Setting)
 }

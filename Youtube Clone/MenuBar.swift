@@ -12,7 +12,9 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     
     private let cellId = "cellId"
     private let horizontalBarHeight: CGFloat = 4
-    private var horizontalLeftConstraint: NSLayoutConstraint?
+    internal var horizontalLeftConstraint: NSLayoutConstraint?
+    
+    weak var delegate: MenuBarDelegate?
     
     let imageNames = ["home", "trending", "subscriptions", "account"]
     
@@ -58,12 +60,8 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let x = CGFloat(indexPath.item) * frame.width / 4
-        horizontalLeftConstraint?.constant = x
         
-        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: { [weak self] in
-            self?.layoutIfNeeded()
-        }, completion: nil)
+        delegate?.scrollToMenuIndex(menuIndex: indexPath.item)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
