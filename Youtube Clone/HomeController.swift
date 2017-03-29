@@ -30,16 +30,21 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return mb
     }()
     
+    let redView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.rgb(r: 230, g: 32, b: 31)
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         fetchVideos()
         
-        navigationItem.title = "Home"
         navigationController?.navigationBar.isTranslucent = false
         
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - contentOffset * 2, height: view.frame.height))
-        titleLabel.text = "Home"
+        titleLabel.text = "  Home"
         titleLabel.textColor = .white
         titleLabel.font = .systemFont(ofSize: 20)
         navigationItem.titleView = titleLabel
@@ -55,48 +60,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func fetchVideos() {
-        guard let url = URL(string: "https://s3-us-west-2.amazonaws.com/youtubeassets/home.json") else { return }
-        
-        URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
-            
-            guard let data = data else { return }
-            
-            if error != nil {
-                print("\(error)")
-                return
-            }
-            
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-            
-                self?.videos = [Video]()
-                
-                for dictionary in json as! [[String: AnyObject]] {
-                    
-                    let video = Video()
-                    video.title = dictionary["title"] as? String
-                    video.thumbnailImageName = dictionary["thumbnail_image_name"] as? String
-                    
-                    let channelDictionary = dictionary["channel"] as! [String: AnyObject]
-                    
-                    let channel = Channel()
-                    channel.name = channelDictionary["name"] as? String
-                    channel.profileImageName = channelDictionary["profile_image_name"] as? String
-                    
-                    video.channel = channel
-                    
-                    self?.videos?.append(video)
-                }
-                
-                DispatchQueue.main.async {
-                    self?.collectionView?.reloadData()
-                }
-            
-            } catch let jsonError {
-                print("\(jsonError)")
-            }
-            
-        }.resume()
+        ApiService.shared.fetchVideos { [weak self] (videos) in
+            self?.videos = videos
+            self?.collectionView?.reloadData()
+        }
     }
     
     private func setupNavBarButtons() {
@@ -117,9 +84,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     private func setupMenuBar() {
+        
+        navigationController?.hidesBarsOnSwipe = true
+        
+        view.addSubview(redView)
         view.addSubview(menuBar)
         
-        menuBar.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 50)
+        redView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 50)
+        menuBar.anchor(top: topLayoutGuide.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 50)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

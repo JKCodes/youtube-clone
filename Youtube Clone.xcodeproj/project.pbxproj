@@ -12,6 +12,7 @@
 		D88D94B11E8BFDCE00E2EC13 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88D94B01E8BFDCE00E2EC13 /* SettingCell.swift */; };
 		D88D94B41E8C007300E2EC13 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88D94B31E8C007300E2EC13 /* Setting.swift */; };
 		D88D94B61E8C050C00E2EC13 /* HomeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88D94B51E8C050C00E2EC13 /* HomeDelegate.swift */; };
+		D88D94BA1E8C254200E2EC13 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88D94B91E8C254200E2EC13 /* ApiService.swift */; };
 		D8AC6D021E897F500029C283 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC6D011E897F500029C283 /* AppDelegate.swift */; };
 		D8AC6D041E897F500029C283 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC6D031E897F500029C283 /* HomeController.swift */; };
 		D8AC6D071E897F500029C283 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8AC6D051E897F500029C283 /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		D88D94B01E8BFDCE00E2EC13 /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		D88D94B31E8C007300E2EC13 /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		D88D94B51E8C050C00E2EC13 /* HomeDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeDelegate.swift; sourceTree = "<group>"; };
+		D88D94B91E8C254200E2EC13 /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		D8AC6CFE1E897F500029C283 /* Youtube Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Youtube Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8AC6D011E897F500029C283 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8AC6D031E897F500029C283 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -61,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D88D94B71E8C252800E2EC13 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D88D94B91E8C254200E2EC13 /* ApiService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		D8AC6CF51E897F4F0029C283 = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +90,7 @@
 		D8AC6D001E897F500029C283 /* Youtube Clone */ = {
 			isa = PBXGroup;
 			children = (
+				D88D94B71E8C252800E2EC13 /* Services */,
 				D8AC6D161E897FF10029C283 /* Protocols and Extensions */,
 				D8AC6D151E897FEB0029C283 /* Model */,
 				D8AC6D141E897FE70029C283 /* View */,
@@ -214,6 +225,7 @@
 				D8AC6D1E1E8980550029C283 /* UIView + Anchors.swift in Sources */,
 				D88D94B41E8C007300E2EC13 /* Setting.swift in Sources */,
 				D88D94B61E8C050C00E2EC13 /* HomeDelegate.swift in Sources */,
+				D88D94BA1E8C254200E2EC13 /* ApiService.swift in Sources */,
 				D8AC6D1D1E8980550029C283 /* UIColor + rgb.swift in Sources */,
 				D8AC6D181E8980360029C283 /* BaseCell.swift in Sources */,
 				D88D94AC1E8BD6A600E2EC13 /* CustomImageView.swift in Sources */,
