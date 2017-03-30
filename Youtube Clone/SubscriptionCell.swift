@@ -11,7 +11,7 @@ import UIKit
 class SubscriptionCell: FeedCell {
 
     override func fetchVideos() {
-        ApiService.shared.fetchFeed(urlString: "https://s3-us-west-2.amazonaws.com/youtubeassets/subscriptions.json") { [weak self] (videos) in
+        ApiService.shared.fetchSubscriptionFeed { [weak self] (videos) in
             self?.videos = videos
             self?.collectionView.reloadData()
         }

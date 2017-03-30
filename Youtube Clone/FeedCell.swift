@@ -15,6 +15,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
     private let contentOffset: CGFloat = 16
     
     var videos: [Video]?
+    let videoLauncher = VideoLauncher()
     
     lazy var collectionView: UICollectionView = { [weak self] in
         guard let this = self else { return UICollectionView() }
@@ -38,7 +39,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     func fetchVideos() {
-        ApiService.shared.fetchFeed(urlString: "https://s3-us-west-2.amazonaws.com/youtubeassets/home.json") { [weak self] (videos) in
+        ApiService.shared.fetchVideos { [weak self] (videos) in
             self?.videos = videos
             self?.collectionView.reloadData()
         }
@@ -64,6 +65,10 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        videoLauncher.showVideoPlayer()
     }
 
 }

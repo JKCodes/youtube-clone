@@ -13,6 +13,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     private let cellId = "cellId"
     private let trendingCellId = "trendingCellId"
     private let subscriptionCellId = "subscriptionCellId"
+    private let accountCellId = "accountCellId"
     
     
     private let contentOffset: CGFloat = 16
@@ -66,6 +67,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.register(TrendingCell.self, forCellWithReuseIdentifier: trendingCellId)
         collectionView?.register(SubscriptionCell.self, forCellWithReuseIdentifier: subscriptionCellId)
+        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: accountCellId)
 
         collectionView?.contentInset = UIEdgeInsetsMake(menuBarHeight, 0, 0, 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(menuBarHeight, 0, 0, 0)
@@ -126,12 +128,11 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         let identifier: String
         
-        if indexPath.item == 1 {
-            identifier = trendingCellId
-        } else if indexPath.item == 2 {
-            identifier = subscriptionCellId
-        } else {
-            identifier = cellId
+        switch indexPath.item {
+        case 0: identifier = cellId
+        case 1: identifier = trendingCellId
+        case 2: identifier = subscriptionCellId
+        default: identifier = accountCellId
         }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
