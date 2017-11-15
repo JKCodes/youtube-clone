@@ -62,7 +62,7 @@ class VideoLauncher: NSObject {
         }
     }
     
-    func handleBack() {
+    @objc func handleBack() {
         videoPlayerView?.removeFromSuperview()
         backButton.removeFromSuperview()
         view.removeFromSuperview()

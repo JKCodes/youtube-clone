@@ -140,7 +140,7 @@ class VideoPlayerView: UIView {
         controlsContainerView.layer.addSublayer(gradientLayer)
     }
     
-    func handlePause() {
+    @objc func handlePause() {
         if isPlaying {
             player?.pause()
             pausePlayButton.setImage(UIImage(named: "play"), for: UIControlState())
@@ -152,7 +152,7 @@ class VideoPlayerView: UIView {
         isPlaying = !isPlaying
     }
     
-    func handleSliderChange() {
+    @objc func handleSliderChange() {
         if let duration = player?.currentItem?.duration {
             let totalSeconds = CMTimeGetSeconds(duration)
             

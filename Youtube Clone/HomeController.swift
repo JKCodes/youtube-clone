@@ -83,11 +83,11 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         navigationItem.rightBarButtonItems = [moreButtonItem, searchBarButtonItem]
     }
     
-    func handleMore() {
+    @objc func handleMore() {
         settingsController.showSettings()
     }
     
-    func handleSearch() {
+    @objc func handleSearch() {
         
     }
     
@@ -163,7 +163,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         vc.navigationItem.title = setting.name.rawValue
         vc.view.backgroundColor = .white
         navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         navigationController?.pushViewController(vc, animated: true)
     }
 }

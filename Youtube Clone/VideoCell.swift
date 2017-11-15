@@ -45,7 +45,7 @@ class VideoCell: BaseCell {
                 // width offset = between left edge and profile image + image length + gap between image and title label + between right of the title label and right edge
                 let size = CGSize(width: frame.width - contentOffset - profileImageLength - contentOffset / 2 - contentOffset, height: 1000)
                 let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-                let attributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 16)]
+                let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
                 let estimatedRect = NSString(string: title).boundingRect(with: size, options: options, attributes: attributes, context: nil)
                                 
                 if estimatedRect.size.height > 20 {
